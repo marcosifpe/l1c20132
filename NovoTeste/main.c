@@ -18,9 +18,8 @@
 
 int main(int argc, char *argv[]) {
 
-	int a;
-
 	printf("Hello, I am GoogleCode!");
+	printf("Hello, I am GoogleCode! 2");
 
 	return 0;
 }
