@@ -11,11 +11,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Verify {
 	private static int questionNumber = 0;
 	private static final String RESULT_PATTERN = "../q";
@@ -68,47 +72,68 @@ public class Verify {
 	}
 
 	@Test
-	public void testQ1() {
+	public void testQ01() {
 		compare();
 	}
 	
 	@Test
-	public void testQ2() {
+	public void testQ02() {
 		compare();
 	}
 
 	@Test
-	public void testQ3() {
+	public void testQ03() {
 		compare();
 	}
 	
 	@Test
-	public void testQ4() {
+	public void testQ04() {
 		compare();
 	}
 
 	@Test
-	public void testQ5() {
+	public void testQ05() {
 		compare();
 	}
 	
 	@Test
-	public void testQ6() {
+	public void testQ06() {
 		compare();
 	}
 
 	@Test
-	public void testQ7() {
+	public void testQ07() {
 		compare();
 	}
 	
 	@Test
-	public void testQ8() {
-		compare();
+	public void testQ08() {
+		try {
+			String oldLine = null;
+			List<String> lines = getLines(resultFiles.get(++questionNumber - 1));			
+			
+			for (Iterator<String> it = lines.iterator(); it.hasNext();) {
+				String line = it.next();
+				assertEquals(line.charAt(0), line.charAt(6));
+				assertEquals(line.charAt(1), line.charAt(5));
+				assertEquals(line.charAt(2), line.charAt(4));
+				
+				if (oldLine != null && oldLine.equals(line)) {
+					fail("Linhas iguais em geração aleatória");
+				}
+				
+				oldLine = line;
+			}
+			
+			
+		} catch (IOException e) {
+			fail("erro na leitura do arquivo");
+		}
+		
 	}
 	
 	@Test
-	public void testQ9() {
+	public void testQ09() {
 		compare();
 	}
 	
@@ -163,69 +188,9 @@ public class Verify {
 	}
 
 	@Test	
-	public void testQ20() {
+	public void testQ20() {		
 		compare();
 	}
-	
-	/*@Test	
-	public void testQ8() {		
-		try {
-		
-			List<String> lines = getLines(resultFiles.get(questionNumber - 1));
-			List<String> expectedLines = getLines(expectedFiles.get(questionNumber - 1)); 
-			
-				for (int i = 0; i < expectedLines.size(); i++) {
-					try {
-						
-					
-						//assertEquals("Resultado não confere (linha " + (i + 1) + ", questão " + questionNumber + ").", expectedLines.get(i), lines.get(i));
-						} catch(IndexOutOfBoundsException ex) {
-							fail("Arquivo gerado com quantidade inferior de linhas ao esperado. Questão " + questionNumber);
-						}
-			}
-			
-		} catch (IOException e) {
-			fail("erro na leitura do arquivo");
-		}
-	}
-
-	*/
-	/*@Test	
-	public void testQ20() {		
-		try {
-			boolean equals = false;
-			String line;
-			Integer[] total = new Integer[20];
-			Integer k = 0;
-			List<String> lines = getLines(resultFiles.get(++questionNumber - 1));			
-			
-			for (int i = 0; i < 20; i++, k++) {
-				line = lines.get(i);
-				total[k] = new Integer(line.split("=")[0].trim());
-				Integer soma = 0;		
-				String[] splits = line.split("=")[1].split("\\+");
-				for (int j = 0; j < splits.length; j++) {
-					soma += new Integer(splits[j].trim());
-				}
-				
-				assertEquals("Os números gerados não correspondem à soma: " + total[k] + ":" + soma, total[k].intValue(), soma.intValue());			
-			}
-			
-			for (int i = 1; i < total.length; i++) {
-				equals = (total[0].intValue() == total[i].intValue());
-				if (!equals)
-					break;
-			}
-			
-			if (equals)
-				fail("todas as somas são iguais.");
-			
-			
-		} catch (IOException e) {
-			fail("erro na leitura do arquivo");
-		}
-	}*/
-
 
 
 	private void compare() {
