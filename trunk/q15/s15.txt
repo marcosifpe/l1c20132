@@ -1,0 +1,10 @@
+E R
+C R
+B A
+A A
+C R
+C R
+D R
+E R
+B A
+A A
