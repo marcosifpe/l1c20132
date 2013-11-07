@@ -20,7 +20,7 @@ public class Verify {
 	private static int questionNumber = 0;
 	private static final String RESULT_PATTERN = "../q";
 	private static final String EXPECTED_PATTERN = "results/";
-	private static final Integer questions = 26;
+	private static final Integer questions = 20;
 	private static List<File> resultFiles = new ArrayList<File>();
 	private static List<File> expectedFiles = new ArrayList<File>();
 
@@ -163,6 +163,34 @@ public class Verify {
 	}
 
 	@Test	
+	public void testQ20() {
+		compare();
+	}
+	
+	/*@Test	
+	public void testQ8() {		
+		try {
+		
+			List<String> lines = getLines(resultFiles.get(questionNumber - 1));
+			List<String> expectedLines = getLines(expectedFiles.get(questionNumber - 1)); 
+			
+				for (int i = 0; i < expectedLines.size(); i++) {
+					try {
+						
+					
+						//assertEquals("Resultado não confere (linha " + (i + 1) + ", questão " + questionNumber + ").", expectedLines.get(i), lines.get(i));
+						} catch(IndexOutOfBoundsException ex) {
+							fail("Arquivo gerado com quantidade inferior de linhas ao esperado. Questão " + questionNumber);
+						}
+			}
+			
+		} catch (IOException e) {
+			fail("erro na leitura do arquivo");
+		}
+	}
+
+	*/
+	/*@Test	
 	public void testQ20() {		
 		try {
 			boolean equals = false;
@@ -196,37 +224,9 @@ public class Verify {
 		} catch (IOException e) {
 			fail("erro na leitura do arquivo");
 		}
-	}
+	}*/
 
-	@Test	
-	public void testQ21() {
-		compare();
-	}
 
-	@Test	
-	public void testQ22() {
-		compare();
-	}
-
-	@Test	
-	public void testQ23() {
-		compare();
-	}
-	
-	@Test	
-	public void testQ24() {
-		compare();
-	}
-	
-	@Test	
-	public void testQ25() {
-		compare();
-	}
-
-	@Test	
-	public void testQ26() {
-		compare();
-	}
 
 	private void compare() {
 		compare(++questionNumber);
