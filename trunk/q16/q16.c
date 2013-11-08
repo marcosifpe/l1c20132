@@ -15,7 +15,7 @@ int main(void) {
 	freopen("s16.txt", "w", stdout);
 	unsigned int i, j, x, y, soma = 0;
 	scanf("%u %u", &x, &y);
-	for (i = y; i < x; i++) {
+	for (i = y; i <= x; i++) {
 		for (j = 0; j < x; j++) {
 			if (i == fibonacci(j)) {
 				printf("%u ", i);
