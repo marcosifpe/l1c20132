@@ -1,2 +1,2 @@
-total de itens: 25
-preco total: 215.15
+total de itens: 30
+preco total: 244.65
