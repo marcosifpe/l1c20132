@@ -1,8 +1,8 @@
 #include<stdio.h>
 
 int somaRec(int a, int b, int c) {
-	if (a == 0) {
-		return a;
+	if (a < b) {
+		return 0;
 	}
 
 	if (a % c == 0) {
